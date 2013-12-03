@@ -1,0 +1,63 @@
+/*
+    Name: Jairo Jurado
+    Date: 11/26/2013
+    Assignment: CNN MVC Division
+*/
+
+/* -------------------- Universal -------------------- */
+header, footer, article, section, aside, nav {
+    background-color: #c63636;
+    border: 2px #f4f4f4 solid;
+}
+
+#body-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* -------------------- Header & Navigation -------------------- */
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    height: 85px;
+}
+
+nav {
+    width: 100%;
+    height: 35px;
+}
+
+/* -------------------- Body -------------------- */
+#body-left {
+    float: left;
+    width: 75%;
+    height: 400px;
+}
+
+#goodies {
+    float: right;
+    width: 24%;
+    height: 400px;
+}
+
+/* -------------------- Extras -------------------- */
+#body-section {
+    clear: both;
+    width: 100%;
+    height: 600px;
+}
+
+/* -------------------- Footer -------------------- */
+footer {
+    width: 100%;
+    height: 60px;
+}

@@ -1,0 +1,54 @@
+/*
+    Name: Jairo Jurado
+    Date: 12/03/2013
+    Assignment: Table-Create
+*/
+
+/* -------------------- Universal -------------------- */
+hr {
+    color: #e58833;
+}
+
+#container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* -------------------- Landing Page -------------------- */
+#landing-words {
+    font-family: 'Pompiere', cursive;
+    font-size: 24pt;
+    float: left;
+    color: #6b6a6a;
+}
+
+#landing-words p {
+    margin: 10% 20% 15% 50%;
+    text-align: right;
+}
+
+#landing-pic {
+    margin: 1% 40% 20% 0;
+}
+
+#landing-body-box {
+    margin: 0 auto;
+}
+
+#landing-button {
+    font-family: 'Lobster Two', cursive;
+    width: 272px;
+    height: 56px;
+    background-color: #c96e23;
+    font-size: 20pt;
+    color: #fff;
+    margin-left: 30%;
+}
+
+/* -------------------- Footer -------------------- */
+footer {
+    font-family: 'Pompiere', cursive;
+    color: #e58833;
+    text-align: center;
+    font-size: 14pt;
+}
