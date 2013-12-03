@@ -23,26 +23,28 @@ hr {
 }
 
 #landing-words p {
-    margin: 10% 20% 15% 50%;
+    margin: 6% 15% 15% 58%;
     text-align: right;
 }
 
 #landing-pic {
-    margin: 1% 40% 20% 0;
+    margin: 2% 30% 0 0;
 }
 
 #landing-body-box {
-    margin: 0 auto;
+    margin: 5% 0 5% 0;
 }
 
 #landing-button {
     font-family: 'Lobster Two', cursive;
-    width: 272px;
+    width: 30%;
     height: 56px;
     background-color: #c96e23;
     font-size: 20pt;
     color: #fff;
-    margin-left: 30%;
+    clear: both;
+    margin-left: 35%;
+    margin-bottom: 5%;
 }
 
 /* -------------------- Footer -------------------- */
