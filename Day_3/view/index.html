@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Business Casual Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/business-casual.css" rel="stylesheet">
+    
+    <!-- JavaScript -->
+    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="../controller/js/angular.min.js"></script>
+    <script src="../controller/js/bootstrap.js"></script>
+  </head>
+
+  <body ng-controller="pageLoad">
+      
+      <!---------- Header ---------->
+      <div class="brand">Business Casual</div>
+      <div class="address-bar">The Plaza | 5483 Start Bootstrap Ave. | Beverly Hills, California 26892 | 555.519.2013</div>
+      
+      <script>
+          function pageLoad($scope) {
+              $scope.page = "html/home.html";
+              
+              $scope.home = function() {
+                  $scope.page = "html/home.html";
+              }
+              
+              $scope.about = function() {
+                  $scope.page = "html/about.html";
+              }
+              
+              $scope.blog = function() {
+                  $scope.page = "html/blog.html";
+              }
+              
+              $scope.contact = function() {
+                  $scope.page = "html/contact.html";
+              }
+          }
+          
+          // Activates the Carousel
+          $('.carousel').carousel({
+              interval: 5000
+          })
+      </script>
+      
+      <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html">Business Casual</a>
+                </div>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a ng-click='home()'>Home</a></li>
+                    <li><a ng-click='about()'>About</a></li>
+                    <li><a ng-click='blog()'>Blog</a></li>
+                    <li><a ng-click='contact()'>Contact</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+      </nav>
+      
+      <div ng-include src="page"></div>
+        
+        <!---------- Footer ---------->
+        <footer>
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Company 2013</p>
+                  </div>
+                </div>
+            </div>
+        </footer>
+  </body>
+</html>
