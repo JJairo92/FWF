@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="login">
+    <head>
+        <meta charset="utf-8">
+        <title>Local Storage Login</title>
+    
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+        <script type="text/javascript" src="http://code.angularjs.org/1.0.2/angular-resource.js"></script>
+        <script type="text/javascript" src="js/localstorage.js"></script>
+    </head>
+
+    <body>
+        <h1><a href="#/index">Local Storage Login</a></h1>
+    
+        <script>
+            iapp = angular.module('login', ['ngResource']);
+    
+            iapp.config(function($routeProvider) {
+                $routeProvider
+                    .when('/index', {
+                        controller: 'homectrl',
+                        templateUrl: 'views/login.html'
+                    })
+                    .when('/loggedIn', {
+                        controller: 'homectrl',
+                        templateUrl: 'views/index.html'
+                    })
+                    .when('/add', {
+                        controller: 'homectrl',
+                        templateUrl: 'views/add.html'
+                    })
+                    .when('/delete/:id', {
+                        controller: 'homectrl',
+                        templateUrl: 'views/delete.html'
+                    })
+                    .when('/edit/:id', {
+                        controller: 'homectrl',
+                        templateUrl: 'views/edit.html'
+                    })
+                    .otherwise({
+                        redirectTo: '/index'
+                    })
+            });
+    
+            iapp.factory('itemData', function($resource) {
+                return $resource('data.json', {});
+    
+            });
+    
+            iapp.run(function($rootScope, itemData) {
+                itemData.get(function(response) {
+                    $rootScope.data = response.inventory;
+                })
+            });
+            
+            iapp.controller('homectrl', function($scope, $rootScope, $location, $routeParams) {
+                myurl = document.URL.split('#/');
+                myurlaction = myurl[1].split('/');
+                action = myurlaction[0];
+    
+                if (action == 'index') {
+                    $rootScope.user = JSON.parse(window.localStorage.getItem("Users"));
+                    console.log($rootScope.user);
+                    
+                    if (!$rootScope.user.loggedIn) {
+                        $location.url('/index');
+    
+                        $scope.login = function() {
+                            if ($scope.username == $rootScope.user.name && $scope.password == $rootScope.user.password) {
+                                $location.url('/loggedIn');
+                                $rootScope.user.loggedIn = true;
+                            }
+                        }   
+                    } else if ($rootScope.user.loggedIn) {
+                        $location.url('/loggedIn');
+                    }
+                } else if (action == 'loggedIn') {
+                    $scope.items = $rootScope.data;
+                    $scope.username = $rootScope.user.name;
+                    console.log($rootScope.user);
+                } else if (action == 'add') {
+                    $scope.item = {}; 
+    
+                    $scope.add = function() {
+                        $rootScope.data.push($scope.item);
+                        alert('Thank you your ' + $scope.item.name + ' has been added!');
+                        $location.url('/loggedIn');
+                    }   
+                } else if (action == 'edit') { 
+                    $scope.item = $rootScope.data[$routeParams.id];
+    
+                    $scope.update = function() {
+                        $scope.item = $rootScope.data[$routeParams.id];
+                        $location.url('/loggedIn');
+                    }
+                } else if (action == 'delete') {
+                    $scope.del = function() {
+                        $rootScope.data.splice($routeParams.id, 1);
+                        $location.url('/loggedIn');
+                    }
+                }
+            });
+        </script>
+
+    <div ng-view></div>
+    </body>
+</html>
